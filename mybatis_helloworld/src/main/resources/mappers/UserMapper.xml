@@ -12,6 +12,6 @@
     <!--int insertUser();-->
     <insert id="insertUser">
         insert into t_user
-        values (null, 'admin', '123456', '男', '12345@qq.com')
+        values (null, 'admin', '123456', 18, '男', '12345@qq.com')
     </insert>
 </mapper>
