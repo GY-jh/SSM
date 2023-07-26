@@ -1,6 +1,7 @@
 package com.gy.mybatis.test;
 
 import com.gy.mybatis.mapper.UserMapper;
+import com.gy.mybatis.pojo.User;
 import com.gy.mybatis.utils.SqlSessionUtil;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -10,6 +11,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * @author Guyue
@@ -59,6 +61,22 @@ public class MyBatisTest {
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         mapper.deleteUser();
         sqlSession.close();
+    }
+
+    @Test
+    public void testGetUserById() {
+        SqlSession sqlSession = SqlSessionUtil.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user = mapper.getUserById();
+        System.out.println(user);
+    }
+
+    @Test
+    public void testGetAllUser() {
+        SqlSession sqlSession = SqlSessionUtil.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        List<User> list = mapper.getAllUser();
+        list.forEach(System.out::println);
     }
 
 
