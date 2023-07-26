@@ -7,6 +7,10 @@
             <param name="ConversionPattern" value="%-5p %d{MM-dd HH:mm:ss,SSS}%m (%F:%L) \n"/>
         </layout>
     </appender>
+    <!--
+        FATAL(致命)>ERROR(错误)>WARN(警告)>INFO(信息)>DEBUG(调试)
+        从左到右打印的内容越来越详细
+    -->
     <logger name="java.sql">
         <level value="debug"/>
     </logger>
