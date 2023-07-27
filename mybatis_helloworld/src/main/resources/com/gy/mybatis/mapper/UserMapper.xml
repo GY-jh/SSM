@@ -47,6 +47,4 @@
         from t_user
     </select>
 
-    <select id="getUserByUsername" resultType="com.gy.mybatis.pojo.User">
-    </select>
 </mapper>
