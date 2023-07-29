@@ -19,4 +19,11 @@ public interface SpecialSQLMapper {
      */
     List<User> getUserByLike(@Param("mohu") String mohu);
 
+    /**
+     * 批量删除用户
+     *
+     * @param ids
+     */
+    void deleteMoreUser(@Param("ids") String ids);
+
 }

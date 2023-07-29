@@ -10,4 +10,11 @@
         <!--select * from t_user where username like '%${mohu}%'-->
         select * from t_user where username like concat('%', #{mohu} , '%')
     </select>
+
+    <!--void deleteMoreUser(@Param("ids") String ids);-->
+    <delete id="deleteMoreUser">
+        delete
+        from t_user
+        where id in (${ids})
+    </delete>
 </mapper>
