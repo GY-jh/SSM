@@ -34,4 +34,11 @@ public interface SpecialSQLMapper {
      */
     List<User> getUserList(@Param("tableName") String tableName);
 
+    /**
+     * 添加用户信息并获得自增的主键
+     *
+     * @param user
+     */
+    void insertUser(User user);
+
 }
