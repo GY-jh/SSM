@@ -26,4 +26,12 @@ public interface SpecialSQLMapper {
      */
     void deleteMoreUser(@Param("ids") String ids);
 
+    /**
+     * 动态设置表名，查询用户信息
+     *
+     * @param tableName
+     * @return
+     */
+    List<User> getUserList(@Param("tableName") String tableName);
+
 }
