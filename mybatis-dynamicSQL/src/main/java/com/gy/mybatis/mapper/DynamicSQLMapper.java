@@ -34,4 +34,11 @@ public interface DynamicSQLMapper {
      */
     void insertMoreEmp(@Param("emps") List<Emp> emps);
 
+    /**
+     * 批量删除用户
+     *
+     * @param empIds
+     */
+    void deleteMoreEmp(@Param("empIds") Integer[] empIds);
+
 }
