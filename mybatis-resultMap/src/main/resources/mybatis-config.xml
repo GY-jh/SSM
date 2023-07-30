@@ -14,10 +14,10 @@
 
     <properties resource="jdbc.properties"/>
 
-    <settings>
-        <!--将下划线映射为驼峰-->
+<!--    <settings>
+        &lt;!&ndash;将下划线映射为驼峰&ndash;&gt;
         <setting name="mapUnderscoreToCamelCase" value="true"/>
-    </settings>
+    </settings>-->
 
     <typeAliases>
         <!--映射实体类-->
