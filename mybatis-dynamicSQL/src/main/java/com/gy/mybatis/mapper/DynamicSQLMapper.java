@@ -1,6 +1,7 @@
 package com.gy.mybatis.mapper;
 
 import com.gy.mybatis.pojo.Emp;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -25,5 +26,12 @@ public interface DynamicSQLMapper {
      * @return
      */
     List<Emp> getEmpByChoose(Emp emp);
+
+    /**
+     * 批量添加员工信息
+     *
+     * @param emps
+     */
+    void insertMoreEmp(@Param("emps") List<Emp> emps);
 
 }
