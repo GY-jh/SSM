@@ -14,6 +14,9 @@
         3、trim
             prefix、suffix：在标签中内容前面或后面添加指定内容
             prefixOverrides、suffixOverrides：在标签中内容前面或后面去掉指定内容
+        4、choose、wher、otherwise
+            相当于Java中的if...else if...else
+            wher至少设置一个，otherwise最多设置一个
     -->
 
     <!--List<Emp> getEmpByCondition(Emp emp);-->
@@ -58,5 +61,23 @@
         <if test="gender != null and gender != ''">
             and gender = #{gender}
         </if>
+    </select>
+
+    <!--List<Emp> getEmpByChoose(Emp emp);-->
+    <select id="getEmpByChoose" resultType="Emp">
+        select * from t_emp
+        <where>
+            <choose>
+                <when test="empName != null and empName != ''">
+                    emp_name = #{empName}
+                </when>
+                <when test="age != null and age != ''">
+                    age = #{age}
+                </when>
+                <when test="gender != null and gender != ''">
+                    gender = #{gender}
+                </when>
+            </choose>
+        </where>
     </select>
 </mapper>

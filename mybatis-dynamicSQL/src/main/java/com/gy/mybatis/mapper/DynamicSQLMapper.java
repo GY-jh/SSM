@@ -18,4 +18,12 @@ public interface DynamicSQLMapper {
      */
     List<Emp> getEmpByCondition(Emp emp);
 
+    /**
+     * 根据choose查询员工信息
+     *
+     * @param emp
+     * @return
+     */
+    List<Emp> getEmpByChoose(Emp emp);
+
 }
