@@ -7,6 +7,7 @@ package com.gy.mybatis.pojo;
 public class Dept {
 
     private Integer deptId;
+
     private String deptName;
 
     public Dept() {
