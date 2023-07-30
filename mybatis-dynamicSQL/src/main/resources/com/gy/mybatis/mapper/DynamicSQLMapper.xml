@@ -23,11 +23,24 @@
             separator：设置没吃循环的数据之间的分隔符
             open：循环的所有内容以什么开始
             close：循环的所有内容以什么结束
+        6、sql片段
+            可以记录一段sql，在需要用的地方使用include标签进行引用
+                <sql id="empColumns">
+                    emp_id,emp_name,age,gender,dept_id
+                </sql>
+                <include refid="empColumns"></include>
     -->
+
+    <sql id="empColumns">
+        <trim suffixOverrides=",">
+            emp_id, emp_name, age, gender, dept_id
+        </trim>
+    </sql>
 
     <!--List<Emp> getEmpByCondition(Emp emp);-->
     <select id="getEmpByCondition" resultType="Emp">
-        select * from t_emp
+        select <include refid="empColumns">
+    </include> from t_emp
         <trim prefix="where" suffixOverrides="and">
             <if test="empName != null and empName != ''">
                 emp_name = #{empName} and
