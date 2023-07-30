@@ -79,4 +79,27 @@
                  left join t_dept on t_emp.dept_id = t_dept.dept_id
         where t_emp.emp_id = #{empId}
     </select>
+
+    <resultMap id="empAndDeptByStepResultMap" type="Emp">
+        <id column="emp_id" property="empId"></id>
+        <result column="emp_name" property="empName"></result>
+        <result column="age" property="age"></result>
+        <result column="gender" property="gender"></result>
+        <!--
+           property：设置需要处理映射关系的属性的属性名
+           select：设置分步查询的sql的唯一标识
+           column：将查询出的某个字段作为分步查询的sql条件
+       -->
+        <association property="dept"
+                     select="com.gy.mybatis.mapper.DeptMapper.getEmpAndDeptByStepTwo"
+                     column="dept_id">
+        </association>
+    </resultMap>
+
+    <!--Emp getEmpAndDeptByStepOne(@Param("empId") Integer empId);-->
+    <select id="getEmpAndDeptByStepOne" resultMap="empAndDeptByStepResultMap">
+        select *
+        from t_emp
+        where emp_id = #{empId}
+    </select>
 </mapper>

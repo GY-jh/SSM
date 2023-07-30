@@ -25,4 +25,12 @@ public interface EmpMapper {
      */
     Emp getEmpAndDeptByEmpId(@Param("empId") Integer empId);
 
+    /**
+     * 通过分步查询查询员工以及所对应的部门信息的第一步
+     *
+     * @param empId
+     * @return
+     */
+    Emp getEmpAndDeptByStepOne(@Param("empId") Integer empId);
+
 }
