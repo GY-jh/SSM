@@ -1,10 +1,12 @@
 package com.gy.mybatis.pojo;
 
+import java.io.Serializable;
+
 /**
  * @author Guyue
  * @date 2023/7/29 16:48
  */
-public class Emp {
+public class Emp implements Serializable {
 
     private Integer empId;
 
