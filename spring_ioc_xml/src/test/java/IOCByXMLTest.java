@@ -1,4 +1,5 @@
 import com.gy.spring.Person;
+import com.gy.spring.Student;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -22,6 +23,15 @@ public class IOCByXMLTest {
      * 其实只是看：『对象 instanceof 指定的类型』的返回结果
      * 只要返回的是true就可以认定为和类型匹配，能够获取到。
      */
+
+    @Test
+    public void testDI() {
+        // 获取IOC容器
+        ApplicationContext ioc = new ClassPathXmlApplicationContext("spring-ioc.xml");
+        // 获取bean
+        Student student = ioc.getBean("studentTwo", Student.class);
+        System.out.println(student);
+    }
 
     @Test
     public void testIOC() {
