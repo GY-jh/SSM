@@ -5,5 +5,6 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="studentOne" class="com.gy.spring.Student"></bean>
+    <!--<bean id="studentTwo" class="com.gy.spring.Student"></bean>-->
 
 </beans>

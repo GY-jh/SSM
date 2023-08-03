@@ -4,7 +4,7 @@ package com.gy.spring;
  * @author Guyue
  * @date 2023/8/2 16:11
  */
-public class Student {
+public class Student implements Person {
 
     private Integer sid;
 
