@@ -14,14 +14,23 @@ public class Student implements Person {
 
     private String gender;
 
+    private Double score;
+
     public Student() {
     }
 
-    public Student(Integer sid, String sname, Integer age, String gender) {
+    public Student(Integer sid, String sname, String gender, Integer age) {
         this.sid = sid;
         this.sname = sname;
-        this.age = age;
         this.gender = gender;
+        this.age = age;
+    }
+
+    public Student(Integer sid, String sname, String gender, Double score) {
+        this.sid = sid;
+        this.sname = sname;
+        this.gender = gender;
+        this.score = score;
     }
 
     public Integer getSid() {
@@ -56,6 +65,14 @@ public class Student implements Person {
         this.gender = gender;
     }
 
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -63,6 +80,7 @@ public class Student implements Person {
                 ", sname='" + sname + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
+                ", score=" + score +
                 '}';
     }
 }
