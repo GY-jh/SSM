@@ -1,4 +1,4 @@
-package com.gy.spring;
+package com.gy.spring.pojo;
 
 /**
  * @author Guyue

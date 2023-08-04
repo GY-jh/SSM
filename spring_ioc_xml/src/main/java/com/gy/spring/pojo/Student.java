@@ -1,4 +1,4 @@
-package com.gy.spring;
+package com.gy.spring.pojo;
 
 /**
  * @author Guyue
@@ -15,6 +15,8 @@ public class Student implements Person {
     private String gender;
 
     private Double score;
+
+    private Clazz clazz;
 
     public Student() {
     }
@@ -73,6 +75,14 @@ public class Student implements Person {
         this.score = score;
     }
 
+    public Clazz getClazz() {
+        return clazz;
+    }
+
+    public void setClazz(Clazz clazz) {
+        this.clazz = clazz;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -81,6 +91,7 @@ public class Student implements Person {
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
                 ", score=" + score +
+                ", clazz=" + clazz +
                 '}';
     }
 }

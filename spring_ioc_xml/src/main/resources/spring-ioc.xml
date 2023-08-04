@@ -4,9 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="studentOne" class="com.gy.spring.Student"></bean>
+    <bean id="studentOne" class="com.gy.spring.pojo.Student"></bean>
 
-    <bean id="studentTwo" class="com.gy.spring.Student">
+    <bean id="studentTwo" class="com.gy.spring.pojo.Student">
         <!--
             property：通过成员变量的set方法进行赋值
             name：设置需要赋值的属性名（和set方法有关）
@@ -18,14 +18,14 @@
         <property name="gender" value="男"></property>
     </bean>
 
-    <bean id="studentThree" class="com.gy.spring.Student">
+    <bean id="studentThree" class="com.gy.spring.pojo.Student">
         <constructor-arg value="1002"></constructor-arg>
         <constructor-arg value="李四"></constructor-arg>
         <constructor-arg value="女"></constructor-arg>
         <constructor-arg value="24" name="age"></constructor-arg>
     </bean>
 
-    <bean id="studentFour" class="com.gy.spring.Student">
+    <bean id="studentFour" class="com.gy.spring.pojo.Student">
         <property name="sid" value="1003"></property>
         <!--
             <：&lt;
@@ -40,6 +40,20 @@
         <property name="gender">
             <null/>
         </property>
+    </bean>
+
+    <bean id="studentFive" class="com.gy.spring.pojo.Student">
+        <property name="sid" value="1004"></property>
+        <property name="sname" value="赵六"></property>
+        <property name="age" value="26"></property>
+        <property name="gender" value="男"></property>
+        <!--ref：引用IOC容器中的某个bean的id-->
+        <property name="clazz" ref="clazzOne"></property>
+    </bean>
+
+    <bean id="clazzOne" class="com.gy.spring.pojo.Clazz">
+        <property name="cid" value="1"></property>
+        <property name="cname" value="王者班"></property>
     </bean>
 
 </beans>
