@@ -1,5 +1,5 @@
+import com.gy.spring.pojo.Clazz;
 import com.gy.spring.pojo.Person;
-import com.gy.spring.pojo.Student;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -32,8 +32,10 @@ public class IOCByXMLTest {
         // Student student = ioc.getBean("studentTwo", Student.class);
         // Student student = ioc.getBean("studentThree", Student.class);
         // Student student = ioc.getBean("studentFour", Student.class);
-        Student student = ioc.getBean("studentFive", Student.class);
-        System.out.println(student);
+        /*Student student = ioc.getBean("studentFive", Student.class);
+        System.out.println(student);*/
+        Clazz clazz = ioc.getBean("clazzInner", Clazz.class);
+        System.out.println(clazz);
     }
 
     @Test
