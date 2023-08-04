@@ -1,5 +1,7 @@
 package com.gy.spring.pojo;
 
+import java.util.Arrays;
+
 /**
  * @author Guyue
  * @date 2023/8/2 16:11
@@ -15,6 +17,8 @@ public class Student implements Person {
     private String gender;
 
     private Double score;
+
+    private String[] hobby;
 
     private Clazz clazz;
 
@@ -83,6 +87,14 @@ public class Student implements Person {
         this.clazz = clazz;
     }
 
+    public String[] getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String[] hobby) {
+        this.hobby = hobby;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -91,6 +103,7 @@ public class Student implements Person {
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
                 ", score=" + score +
+                ", hobby=" + Arrays.toString(hobby) +
                 ", clazz=" + clazz +
                 '}';
     }
