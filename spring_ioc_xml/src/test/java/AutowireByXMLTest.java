@@ -1,0 +1,19 @@
+import com.gy.spring.controller.UserController;
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * @author Guyue
+ * @date 2023/8/4 17:18
+ */
+public class AutowireByXMLTest {
+
+    @Test
+    public void testAutowire() {
+        ApplicationContext ioc = new ClassPathXmlApplicationContext("spring-autowire-xml.xml");
+        UserController userController = ioc.getBean(UserController.class);
+        userController.saveUser();
+    }
+
+}
