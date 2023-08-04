@@ -32,7 +32,8 @@ public class IOCByXMLTest {
         // Student student = ioc.getBean("studentTwo", Student.class);
         // Student student = ioc.getBean("studentThree", Student.class);
         // Student student = ioc.getBean("studentFour", Student.class);
-        Student student = ioc.getBean("studentFive", Student.class);
+        // Student student = ioc.getBean("studentFive", Student.class);
+        Student student = ioc.getBean("studentSix", Student.class);
         System.out.println(student);
         /*Clazz clazz = ioc.getBean("clazzInner", Clazz.class);
         System.out.println(clazz);*/
