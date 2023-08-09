@@ -2,10 +2,7 @@ package com.gy.spring.aop.annotation;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -14,7 +11,10 @@ import java.util.Arrays;
  * @author Guyue
  * @date 2023/8/9 16:49
  * 1、在切面中,需要通过指定的注解将方法标识为通知方法
- * @Before：前置通知,在目标对象方法执行之前执行 。
+ * @Before：前置通知,在目标对象方法执行之前执行
+ * @After：后置通知，在目标对象的finally字句中执行
+ * @AfterReturning：返回通知，在目标对象返回值之后执行
+ * @AfterThrowing：异常通知，在目标对象方法的catch字句中执行 .
  * <p>
  * 2、切入点表达式：设置在标识通知的注解的value属性中
  * @Before("execution(public int com.gy.spring.aop.annotation.CalculatorImpl.add(int,int))")
@@ -56,8 +56,34 @@ public class LoggerAspect {
     }
 
     @After("pointCut()")
-    public void afterAdviceMethod() {
+    public void afterAdviceMethod(JoinPoint joinPoint) {
+        // 获取连接点所对应方法的签名信息
+        Signature signature = joinPoint.getSignature();
+        System.out.println("LoggerAspect，方法：" + signature.getName() + "，执行完毕！");
     }
 
+    /**
+     * 在返回通知中若要获取目标对象方法的返回值
+     * 只需要通过@AfterReturning注解的returning属性
+     * 就可以将通知方法的某个参数指定为接收目标对象方法的返回值的参数
+     */
+    @AfterReturning(value = "pointCut()", returning = "result")
+    public void afterReturningAdviceMethod(JoinPoint joinPoint, Object result) {
+        // 获取连接点所对应方法的签名信息
+        Signature signature = joinPoint.getSignature();
+        System.out.println("LoggerAspect，方法：" + signature.getName() + "，结果：" + result);
+    }
+
+    /**
+     * 在异常通知中若要获取目标对象方法的异常
+     * 只需要通过@AfterThrowing注解的throwing属性
+     * 就可以将通知方法的某个参数指定为接收目标对象方法出现的异常的参数
+     */
+    @AfterThrowing(value = "pointCut()", throwing = "e")
+    public void afterThrowingAdviceMethod(JoinPoint joinPoint, Exception e) {
+        // 获取连接点所对应方法的签名信息
+        Signature signature = joinPoint.getSignature();
+        System.out.println("LoggerAspect，方法：" + signature.getName() + "，异常:" + e);
+    }
 
 }
