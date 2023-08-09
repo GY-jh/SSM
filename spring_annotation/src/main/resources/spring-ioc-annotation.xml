@@ -25,8 +25,8 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>-->
 
-    <bean id="service" class="com.gy.spring.service.impl.UserServiceImpl"></bean>
+    <!--<bean id="service" class="com.gy.spring.service.impl.UserServiceImpl"></bean>
 
-    <bean id="dao" class="com.gy.spring.dao.impl.UserDaoImpl"></bean>
+    <bean id="dao" class="com.gy.spring.dao.impl.UserDaoImpl"></bean>-->
 
 </beans>

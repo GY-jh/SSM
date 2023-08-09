@@ -2,7 +2,6 @@ package com.gy.spring.controller;
 
 import com.gy.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -12,8 +11,9 @@ import org.springframework.stereotype.Controller;
 @Controller("controller")
 public class UserController {
 
+    // @Autowired(required = false)
+    // @Qualifier("userServiceImpl")
     @Autowired
-    @Qualifier("userServiceImpl")
     private UserService userService;
 
     /*@Autowired
