@@ -3,6 +3,7 @@ package com.gy.spring.service.impl;
 import com.gy.spring.dao.UserDao;
 import com.gy.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     @Autowired
+    @Qualifier("userDaoImpl")
     private UserDao userDao;
 
     @Override

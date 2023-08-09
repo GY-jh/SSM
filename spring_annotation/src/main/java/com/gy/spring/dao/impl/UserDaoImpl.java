@@ -1,4 +1,4 @@
-package com.gy.spring.dao.Impl;
+package com.gy.spring.dao.impl;
 
 import com.gy.spring.dao.UserDao;
 import org.springframework.stereotype.Repository;
