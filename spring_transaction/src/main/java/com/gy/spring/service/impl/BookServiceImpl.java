@@ -4,6 +4,7 @@ import com.gy.spring.dao.BookDao;
 import com.gy.spring.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -39,6 +40,15 @@ public class BookServiceImpl implements BookService {
      * rollbackForClassName属性：需要设置一个字符串类型的全类名
      * noRollbackFor属性：需要设置一个Class类型的对象
      * rollbackFor属性：需要设置一个字符串类型的全类名
+     *
+     * 事务属性：事务隔离级别
+     * 数据库系统必须具有隔离并发运行各个事务的能力，使它们不会相互影响，避免各种并发问题。一个事务与其他事务隔离的程度称为隔离级别。
+     * SQL标准中规定了多种事务隔离级别，不同隔离级别对应不同的干扰程度，隔离级别越高，数据一致性就越好，但并发性越弱。
+     *隔离级别一共有四种：
+     * 读未提交：READ UNCOMMITTED
+     * 读已提交：READ COMMITTED
+     * 可重复读：REPEATABLE READ
+     * 串行化：SERIALIZABLE
      */
 
     @Override
@@ -47,6 +57,7 @@ public class BookServiceImpl implements BookService {
             // timeout = 3
             // noRollbackFor = ArithmeticException.class
             // noRollbackForClassName = "ArithmeticException"
+            isolation = Isolation.DEFAULT
     )
     public void buyBook(Integer userId, Integer bookId) {
        /* try {
