@@ -4,7 +4,6 @@ import com.gy.spring.service.BookService;
 import com.gy.spring.service.CheckoutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,7 +19,7 @@ public class CheckoutServiceImpl implements CheckoutService {
     private BookService bookService;
 
     @Override
-    @Transactional
+    // @Transactional
     public void checkout(Integer userId, Integer[] bookIds) {
         for (Integer bookId : bookIds) {
             bookService.buyBook(userId, bookId);
