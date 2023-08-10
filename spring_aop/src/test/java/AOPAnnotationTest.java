@@ -7,7 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author Guyue
  * @date 2023/8/9 17:07
  */
-public class AOPTest {
+public class AOPAnnotationTest {
 
     @Test
     public void testAopByAnnotation() {
