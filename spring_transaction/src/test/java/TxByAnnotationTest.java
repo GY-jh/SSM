@@ -28,7 +28,8 @@ public class TxByAnnotationTest {
 
     @Test
     public void testBuyBook() {
-        booKController.buyBook(1, 1);
+        // booKController.buyBook(1, 1);
+        booKController.checkout(1, new Integer[]{1, 2});
     }
 
 }
