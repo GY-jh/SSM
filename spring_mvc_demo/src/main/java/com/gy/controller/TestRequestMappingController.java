@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @GetMapping,@PostMapping,@DeleteMapping,@PutMaping .
  * <p>
  * 4、@RequestMapping注解的params属性
- * 作用：通过请求的请求参数匹配请求，即浏览器发送的请求的请求参数必须满足params属性到的设置
+ * 作用：通过请求的请求参数匹配请求，即浏览器发送的请求的请求参数必须满足params属性的设置
  * params可以使用四种表达式：
  * "param"：表示当前所匹配请求的请求参数中必须携带param参数
  * "!param"：表示当前所匹配请求的请求参数中一定不能携带param参数
@@ -38,6 +38,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * "param!=value"：表示当前所匹配请求的请求参数中可以不携带param参数，若携带值一定不能是value
  * 若浏览器所发送的请求的请求路径和@RequestMapping注解value属性匹配，但是请求参数不匹配
  * 此时页面报错：400 – Parameter conditions "XXX" not met for actual request parameters:
+ * <p>
+ * 5、@RequestMapping注解的headers属性
+ * 作用：通过请求的请求头信息匹配请求，即浏览器发送的请求的请求头信息必须满足headers属性的设置
+ * "header"：要求请求映射所匹配的请求必须携带header请求头信息
+ * "!header"：要求请求映射所匹配的请求必须不能携带header请求头信息
+ * "header=value"：要求请求映射所匹配的请求必须携带header请求头信息且header=value
+ * "header!=value"：要求请求映射所匹配的请求必须携带header请求头信息且header!=value
+ * 若浏览器所发送的请求的请求路径和@RequestMapping注解value属性匹配，但是请求头信息不匹配
+ * 此时页面报错：404
  */
 @Controller
 // @RequestMapping("/test")
@@ -47,7 +56,9 @@ public class TestRequestMappingController {
     @RequestMapping(
             value = {"/hello", "/abc"},
             method = {RequestMethod.POST, RequestMethod.GET},
-            params = {"username", "!password", "age=20", "gender!=女"})
+            // params = {"username", "!password", "age=20", "gender!=女"},
+            headers = {"referer"}
+    )
     public String hello() {
         return "success";
     }
