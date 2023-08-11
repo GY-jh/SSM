@@ -47,6 +47,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * "header!=value"：要求请求映射所匹配的请求必须携带header请求头信息且header!=value
  * 若浏览器所发送的请求的请求路径和@RequestMapping注解value属性匹配，但是请求头信息不匹配
  * 此时页面报错：404
+ *
+ * 6、SpringMVC支持ant风格的路径
+ * 在@RequestMapping注解的value属性值中设置一些特殊制服
+ * ?：表示任意的单个字符（不包括?）
+ * *：表示任意个数的任意字符（不包括?和/）
+ * **：表示任意层数的任意目录，注意使用方式只能**写在双斜线中，前后不能有任何其他字符
  */
 @Controller
 // @RequestMapping("/test")
@@ -60,6 +66,11 @@ public class TestRequestMappingController {
             headers = {"referer"}
     )
     public String hello() {
+        return "success";
+    }
+
+    @RequestMapping("/**/test/ant")
+    public String testAnt() {
         return "success";
     }
 
