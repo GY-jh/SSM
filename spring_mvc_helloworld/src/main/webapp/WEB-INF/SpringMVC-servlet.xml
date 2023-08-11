@@ -14,7 +14,6 @@
             <bean class="org.thymeleaf.spring5.SpringTemplateEngine">
                 <property name="templateResolver">
                     <bean class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
-                        <!--/WEB-INF/templates/index.html-->
                         <!-- 视图前缀 -->
                         <property name="prefix" value="/WEB-INF/templates/"/>
                         <!-- 视图后缀 -->
@@ -26,4 +25,5 @@
             </bean>
         </property>
     </bean>
+
 </beans>
