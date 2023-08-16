@@ -1,21 +1,28 @@
 package com.gy.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created with IntelliJ IDEA.
  *
  * @Author: GuYue
  * @Date: 2023/8/15 21:50
- * @Description: 获取请求参数的方式
+ * @Description :
+ * <p>
+ * 获取请求参数的方式
  * 1、通过ServletAPI获取
  * 只需要在控制器方法的形参位置设置HttpServletRequest类型的形参，就可以在控制器方法中使用request对象获取请求参数
+ * <p>
  * 2、通过控制器方法的形参获取
  * 只需要在控制器方法的形参位置，设置一个形参，形参的名字和请求参数的名字一致即可
+ * <p>
  * 3、@RequestParam:将请求参数和控制器方法的形参绑定
  * @RequestParam注解的三个属性 ： value、required、defaultValue
  * value：设置和形参绑定的请求参数的名字
@@ -24,12 +31,17 @@ import javax.servlet.http.HttpServletRequest;
  * 400 – Required request parameter 'XXX' for method parameter type String is not present
  * 若设置为false，则表示value所对应的请求参数不是必须传输，若为传输，则形参值为null
  * defaultValue：设置当没有传输value所对应的请求参数时，为形参设置的默认值，测试和required属性值无关
+ * <p>
+ * 4、@RequestHeader：将请求头信息和控制器方法的形参绑定
+ * <p>
+ * 5、@CookieValue：将cookie数据和控制器方法的形参绑定
  */
 @Controller
 public class TestParamController {
 
     @RequestMapping("/para/servletAPI")
     public String getParamByServletAPI(HttpServletRequest request) {
+        HttpSession session = request.getSession();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         System.out.println("username:" + username + " password:" + password);
@@ -39,8 +51,12 @@ public class TestParamController {
     @RequestMapping("/param")
     public String getParam(
             @RequestParam(value = "userName", required = false, defaultValue = "hello") String username,
-            String password
+            String password,
+            @RequestHeader("referer") String referer,
+            @CookieValue("JSESSIONID") String jsessionId
     ) {
+        System.out.println("jsessionId:" + jsessionId);
+        System.out.println("referer:" + referer);
         System.out.println("username:" + username + " password:" + password);
         return "success";
     }
