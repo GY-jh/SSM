@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns="http://www.springframework.org/schema/beans"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--扫描控制层组件-->
     <context:component-scan base-package="com.gy.controller"></context:component-scan>
@@ -25,5 +27,15 @@
             </bean>
         </property>
     </bean>
+
+    <!--开启MVC注解驱动-->
+    <mvc:annotation-driven/>
+
+    <!--
+        视图控制器：为当前的请求直接设置视图名称实现页面跳转
+        若设置视图控制器，则只有视图控制器所设置的请求会被处理，其他的请求将全部404
+        此时必须在配置一个标签：<mvc:annotation-driven/>
+    -->
+    <mvc:view-controller path="/" view-name="index"></mvc:view-controller>
 
 </beans>
