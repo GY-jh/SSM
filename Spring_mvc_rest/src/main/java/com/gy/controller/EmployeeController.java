@@ -5,6 +5,7 @@ import com.gy.pojo.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -42,6 +43,24 @@ public class EmployeeController {
     @RequestMapping(value = "/employee", method = RequestMethod.POST)
     public String addEmployee(Employee employee) {
         // 保存员工信息
+        employeeDao.save(employee);
+        // 重定向到列表功能：/employee
+        return "redirect:/employee";
+    }
+
+    @RequestMapping(value = "/employee/{id}", method = RequestMethod.GET)
+    public String toUpdate(@PathVariable("id") Integer id, Model model) {
+        // 根据Id查询员工信息
+        Employee employee = employeeDao.get(id);
+        // 将员工信息共享到请求域中
+        model.addAttribute("employee", employee);
+        // 跳转到employee_update.html
+        return "employee_update.html";
+    }
+
+    @RequestMapping(value = "/employee", method = RequestMethod.PUT)
+    public String updateEmployee(Employee employee) {
+        // 修改员工信息
         employeeDao.save(employee);
         // 重定向到列表功能：/employee
         return "redirect:/employee";
