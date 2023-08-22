@@ -39,7 +39,7 @@
     -->
 
     <!--配置默认的Servlet处理静态资源-->
-    <mvc:default-servlet-handler/>
+    <mvc:default-servlet-handler />
 
     <!--开启MVC的注解驱动-->
     <mvc:annotation-driven/>
