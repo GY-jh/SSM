@@ -17,24 +17,26 @@ import javax.servlet.http.HttpServletResponse;
  * preHandle()：在控制器方法执行之前执行，器返回值表示对控制器方法的拦截（false）或放行（true）
  * postHandle()：在控制器方法执行之后执行
  * afterCompletion()：在控制器方法执行之后，且渲染视图完毕
- *
- * 多个拦截器的执行顺序
+ * <p>
+ * 多个拦截器的执行顺序和SpringMVC的配置文件中配置的顺序有关
+ * preHandle()按照配置的顺序执行
+ * postHandle()和 afterCompletion()按照配置的反序执行
  */
 @Controller
-public class FirstInterceptor implements HandlerInterceptor {
+public class SecondInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("FirstInterceptor-->preHandle");
+        System.out.println("SecondInterceptor-->preHandle");
         return true;
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        System.out.println("FirstInterceptor-->postHandle");
+        System.out.println("SecondInterceptor-->postHandle");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        System.out.println("FirstInterceptor-->afterCompletion");
+        System.out.println("SecondInterceptor-->afterCompletion");
     }
 }
