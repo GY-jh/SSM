@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.UUID;
 
 /**
  * Created with IntelliJ IDEA.
@@ -55,4 +57,29 @@ public class FileUpAndDownController {
         return responseEntity;
     }
 
+    @RequestMapping("/test/up")
+    public String testUp(MultipartFile photo, HttpSession session) throws Exception {
+        // 获取上传文件的文件名
+        String fileName = photo.getOriginalFilename();
+        // 获取上传文件的后缀
+        String hzName = fileName.substring(fileName.lastIndexOf("."));
+        // 获取UUID
+        String uuid = UUID.randomUUID().toString();
+        // 拼接一个新的文件名
+        fileName = uuid + hzName;
+        // 获取ServletContext对象
+        ServletContext servletContext = session.getServletContext();
+        // 获取当前工程下photo目录的真实路径
+        String photoPath = servletContext.getRealPath("photo");
+        // 创建photoPath所对应的File对象
+        File file = new File(photoPath);
+        // 判断file所对应的目录是否存在
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        String finalPath = photoPath + File.separator + fileName;
+        // 上传文件
+        photo.transferTo(new File(finalPath));
+        return "success";
+    }
 }
