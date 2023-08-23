@@ -39,6 +39,7 @@ import java.util.Map;
  * list --> json数组
  */
 @Controller
+// @RestController  = @Controller+@ResponseBody
 public class TestAjaxController {
 
     @RequestMapping("/test/ajax")
