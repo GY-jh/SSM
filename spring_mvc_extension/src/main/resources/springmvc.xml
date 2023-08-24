@@ -51,20 +51,31 @@
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 
     <!--配置拦截器-->
-    <mvc:interceptors>
+    <!--<mvc:interceptors>
         <ref bean="firstInterceptor"/>
         <ref bean="secondInterceptor"/>
-        <!--bean标签和ref标签所配置的拦截器默认对DispatcherServlet处理的所有请求进行拦截-->
-        <!--<bean class="com.gy.interceptor.FirstInterceptor"></bean>-->
-        <!--<ref bean="firstInterceptor" />-->
-        <!--<mvc:interceptor>
+        &lt;!&ndash;bean标签和ref标签所配置的拦截器默认对DispatcherServlet处理的所有请求进行拦截&ndash;&gt;
+        &lt;!&ndash;<bean class="com.gy.interceptor.FirstInterceptor"></bean>&ndash;&gt;
+        &lt;!&ndash;<ref bean="firstInterceptor" />&ndash;&gt;
+        &lt;!&ndash;<mvc:interceptor>
             &lt;!&ndash;配置需要拦截的请求的请求路径，/**表示所有&ndash;&gt;
             <mvc:mapping path="/**"/>
             &lt;!&ndash;配置需要排除拦截的请求的请求路径&ndash;&gt;
             <mvc:exclude-mapping path="/abc"/>
             &lt;!&ndash;配置拦截器&ndash;&gt;
             <ref bean="firstInterceptor"/>
-        </mvc:interceptor>-->
-    </mvc:interceptors>
+        </mvc:interceptor>&ndash;&gt;
+    </mvc:interceptors>-->
+
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <!--key设置哟啊处理的一次，value设置出现该异常时要跳转的页面所对应的逻辑视图-->
+                <prop key="java.lang.ArithmeticException">error</prop>
+            </props>
+        </property>
+        <!--设置共享在请求域中的一次信息的属性名-->
+        <property name="exceptionAttribute" value="ex"></property>
+    </bean>
 
 </beans>

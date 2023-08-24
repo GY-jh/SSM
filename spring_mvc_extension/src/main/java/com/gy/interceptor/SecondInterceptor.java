@@ -19,8 +19,12 @@ import javax.servlet.http.HttpServletResponse;
  * afterCompletion()：在控制器方法执行之后，且渲染视图完毕
  * <p>
  * 多个拦截器的执行顺序和SpringMVC的配置文件中配置的顺序有关
- * preHandle()按照配置的顺序执行
- * postHandle()和 afterCompletion()按照配置的反序执行
+ * preHandle()按照配置的顺序执行，postHandle()和 afterCompletion()按照配置的反序执行
+ * <p>
+ * 若拦截器中有某个拦截器的preHandle()返回了false
+ * 拦截器的preHandle()返回false和它之前的拦截器的preHandle()都会执行
+ * 所有的拦截器的postHandle()都不执行
+ * 拦截器的preHandle()返回false之前的拦截器的afterCompletion()会执行
  */
 @Controller
 public class SecondInterceptor implements HandlerInterceptor {
