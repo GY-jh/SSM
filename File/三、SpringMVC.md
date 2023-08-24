@@ -206,7 +206,7 @@ public class HelloController {
 
 ```xml
 <!-- 自动扫描包 -->
-<context:component-scan base-package="com.atguigu.mvc.controller"/>
+<context:component-scan base-package="com.gy.mvc.controller"/>
         <!-- 配置Thymeleaf视图解析器 -->
 <bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
 <property name="order" value="1"/>
@@ -925,7 +925,7 @@ _method的值，因此请求参数_method的值才是最终的请求方式
 - 准备实体类
 
 ```java
-package com.atguigu.mvc.bean;
+package com.gy.mvc.bean;
 
 public class Employee {
     private Integer id;
@@ -982,13 +982,13 @@ public class Employee {
 - 准备dao模拟数据
 
 ```java
-package com.atguigu.mvc.dao;
+package com.gy.mvc.dao;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.atguigu.mvc.bean.Employee;
+import com.gy.mvc.bean.Employee;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -1586,7 +1586,7 @@ SpringMVC的拦截器必须在SpringMVC的配置文件中进行配置：
 
 ```xml
 
-<bean class="com.atguigu.interceptor.FirstInterceptor"></bean>
+<bean class="com.gy.interceptor.FirstInterceptor"></bean>
 <ref bean="firstInterceptor"></ref>
         <!-- 以上两种配置方式都是对DispatcherServlet所处理的所有的请求进行拦截 -->
 <mvc:interceptor>
@@ -1751,7 +1751,7 @@ public class SpringConfig {
 
 @Configuration
 //扫描组件
-@ComponentScan("com.atguigu.mvc.controller")
+@ComponentScan("com.gy.mvc.controller")
 //开启MVC注解驱动
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
@@ -2489,7 +2489,7 @@ CREATE TABLE `t_emp`
 
 ```xml
 <!--扫描组件-->
-<context:component-scan base-package="com.atguigu.ssm.controller">
+<context:component-scan base-package="com.gy.ssm.controller">
 </context:component-scan>
         <!--配置视图解析器-->
 <bean id="viewResolver"
@@ -2563,7 +2563,7 @@ public interface EmployeeMapper {
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.atguigu.ssm.mapper.EmployeeMapper">
+<mapper namespace="com.gy.ssm.mapper.EmployeeMapper">
     <select id="getEmployeeList" resultType="Employee">
         select * from t_emp
     </select>
@@ -2607,7 +2607,7 @@ public interface EmployeeMapper {
                            http://www.springframework.org/schema/context
                            https://www.springframework.org/schema/context/spring-context.xsd">
     <!--扫描组件-->
-    <context:component-scan base-package="com.atguigu.ssm">
+    <context:component-scan base-package="com.gy.ssm">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
     <!-- 引入jdbc.properties -->
@@ -2628,7 +2628,7 @@ public interface EmployeeMapper {
         <!-- 设置数据源 -->
         <property name="dataSource" ref="dataSource"></property>
         <!-- 设置类型别名所对应的包 -->
-        <property name="typeAliasesPackage" value="com.atguigu.ssm.pojo">
+        <property name="typeAliasesPackage" value="com.gy.ssm.pojo">
         </property>
         <!--
             设置映射文件的路径
@@ -2645,7 +2645,7 @@ public interface EmployeeMapper {
         并将这些动态代理作为IOC容器的bean管理
     -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.atguigu.ssm.mapper"></property>
+        <property name="basePackage" value="com.gy.ssm.mapper"></property>
     </bean>
 </beans>
 ```

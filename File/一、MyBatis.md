@@ -205,7 +205,7 @@ public interface UserMapper {
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.atguigu.mybatis.mapper.UserMapper">
+<mapper namespace="com.gy.mybatis.mapper.UserMapper">
     <!--int insertUser();-->
     <nsert id="insertUser">
         <insert into t_user values(null,'admin','123456',23,'男','12345@qq.com')
@@ -321,7 +321,7 @@ InputStream is=Resources.getResourceAsStream("mybatis-config.xml");
 > 	-->
 > 		<!--<typeAlias type="com.atguigu.mybatis.pojo.User"></typeAlias>-->
 > 		<!--以包为单位，将包下所有的类型设置默认的类型别名，即类名且不区分大小写-->
-> 		<package name="com.atguigu.mybatis.pojo"/>
+> 		<package name="com.gy.mybatis.pojo"/>
 > 	</typeAliases>
 > 	<!--
 > 		environments：配置多个连接数据库的环境
@@ -382,7 +382,7 @@ InputStream is=Resources.getResourceAsStream("mybatis-config.xml");
 >             1、mapper接口所在的包要和映射文件所在的包一致
 >             2、mapper接口要和映射文件的名字一致
 >    	-->
->    		<package name="com.atguigu.mybatis.mapper"/>
+>    		<package name="com.gy.mybatis.mapper"/>
 >    	</mappers>
 > </configuration>
 > ```
@@ -420,7 +420,7 @@ InputStream is=Resources.getResourceAsStream("mybatis-config.xml");
 
 ```xml
 <!--User getUserById();-->
-<select id="getUserById" resultType="com.atguigu.mybatis.bean.User">
+<select id="getUserById" resultType="com.gy.mybatis.bean.User">
     select * from t_user where id = 2
 </select>
 ```
@@ -429,7 +429,7 @@ InputStream is=Resources.getResourceAsStream("mybatis-config.xml");
 
 ```xml
 <!--List<User> getUserList();-->
-<select id="getUserList" resultType="com.atguigu.mybatis.bean.User">
+<select id="getUserList" resultType="com.gy.mybatis.bean.User">
     select * from t_user
 </select>
 ```
@@ -837,7 +837,7 @@ Emp getEmpByStep(@Param("eid") int eid);
         select：设置分步查询，查询某个属性的值的sql的标识（namespace.sqlId）
         column：将sql以及查询结果中的某个字段设置为分步查询的条件
     -->
-    <association property="dept" select="com.atguigu.MyBatis.mapper.DeptMapper.getEmpDeptByStep" column="did">
+  <association property="dept" select="com.gy.MyBatis.mapper.DeptMapper.getEmpDeptByStep" column="did">
     </association>
 </resultMap>
         <!--Emp getEmpByStep(@Param("eid") int eid);-->
@@ -916,7 +916,7 @@ Dept getDeptByStep(@Param("did") int did);
 <resultMap id="deptEmpStep" type="Dept">
     <id property="did" column="did"></id>
     <result property="dname" column="dname"></result>
-    <collection property="emps" fetchType="eager" select="com.atguigu.MyBatis.mapper.EmpMapper.getEmpListByDid"
+  <collection property="emps" fetchType="eager" select="com.gy.MyBatis.mapper.EmpMapper.getEmpListByDid"
                 column="did">
     </collection>
 </resultMap>
@@ -1267,7 +1267,7 @@ SqlSession关闭之后，一级缓存中的数据会写入二级缓存
         <appender-ref ref="STDOUT"/>
     </root>
     <!-- 根据特殊需求指定局部日志级别 -->
-    <logger name="com.atguigu.crowd.mapper" level="DEBUG"/>
+  <logger name="com.gy.crowd.mapper" level="DEBUG"/>
 </configuration>
 ```
 
@@ -1383,16 +1383,16 @@ SqlSession关闭之后，一级缓存中的数据会写入二级缓存
                         password="123456">
         </jdbcConnection>
         <!-- javaBean的生成策略-->
-        <javaModelGenerator targetPackage="com.atguigu.mybatis.pojo" targetProject=".\src\main\java">
+      <javaModelGenerator targetPackage="com.gy.mybatis.pojo" targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- SQL映射文件的生成策略 -->
-        <sqlMapGenerator targetPackage="com.atguigu.mybatis.mapper" targetProject=".\src\main\resources">
+      <sqlMapGenerator targetPackage="com.gy.mybatis.mapper" targetProject=".\src\main\resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- Mapper接口的生成策略 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.atguigu.mybatis.mapper"
+      <javaClientGenerator type="XMLMAPPER" targetPackage="com.gy.mybatis.mapper"
                              targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>

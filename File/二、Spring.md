@@ -190,7 +190,7 @@ public class HelloWorld {
 		id：设置bean的唯一标识
 		class：设置bean所对应类型的全类名
 -->
-<bean id="helloworld" class="com.atguigu.spring.bean.HelloWorld"></bean>
+<bean id="helloworld" class="com.gy.spring.bean.HelloWorld"></bean>
 ```
 
 #### ⑥创建测试类测试
@@ -218,9 +218,9 @@ Spring 底层默认通过反射技术调用组件类的无参构造器来创建�
 >
 > failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed
 >
-> to instantiate [com.atguigu.spring.bean.HelloWorld]: No default constructor found; nested
+> to instantiate [com.gy.spring.bean.HelloWorld]: No default constructor found; nested
 >
-> exception is java.lang.NoSuchMethodException: com.atguigu.spring.bean.HelloWorld.
+> exception is java.lang.NoSuchMethodException: com.gy.spring.bean.HelloWorld.
 >
 > <init>()
 
@@ -262,15 +262,15 @@ public void testHelloWorld(){
 
 ```xml
 
-<bean id="helloworldOne" class="com.atguigu.spring.bean.HelloWorld"></bean>
-<bean id="helloworldTwo" class="com.atguigu.spring.bean.HelloWorld"></bean>
+<bean id="helloworldOne" class="com.gy.spring.bean.HelloWorld"></bean>
+<bean id="helloworldTwo" class="com.gy.spring.bean.HelloWorld"></bean>
 ```
 
 根据类型获取时会抛出异常：
 
 > org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean
 >
-> of type 'com.atguigu.spring.bean.HelloWorld' available: expected single matching bean but
+> of type 'com.gy.spring.bean.HelloWorld' available: expected single matching bean but
 >
 > found 2: helloworldOne,helloworldTwo
 
@@ -352,7 +352,7 @@ public class Student {
 
 ```xml
 
-<bean id="studentOne" class="com.atguigu.spring.bean.Student">
+<bean id="studentOne" class="com.gy.spring.bean.Student">
     <!-- property标签：通过组件类的setXxx()方法给组件对象设置属性 -->
     <!-- name属性：指定属性名（这个属性名是getXxx()、setXxx()方法定义的，和成员变量无关）-->
     <!-- value属性：指定属性值 -->
@@ -391,7 +391,7 @@ public Student(Integer id,String name,Integer age,String sex){
 
 ```xml
 
-<bean id="studentTwo" class="com.atguigu.spring.bean.Student">
+<bean id="studentTwo" class="com.gy.spring.bean.Student">
     <constructor-arg value="1002"></constructor-arg>
     <constructor-arg value="李四"></constructor-arg>
     <constructor-arg value="33"></constructor-arg>
@@ -539,7 +539,7 @@ public void setClazz(Clazz clazz){
 
 ```xml
 
-<bean id="clazzOne" class="com.atguigu.spring.bean.Clazz">
+<bean id="clazzOne" class="com.gy.spring.bean.Clazz">
     <property name="clazzId" value="1111"></property>
     <property name="clazzName" value="财源滚滚班"></property>
 </bean>
@@ -549,7 +549,7 @@ public void setClazz(Clazz clazz){
 
 ```xml
 
-<bean id="studentFour" class="com.atguigu.spring.bean.Student">
+<bean id="studentFour" class="com.gy.spring.bean.Student">
     <property name="id" value="1004"></property>
     <property name="name" value="赵六"></property>
     <property name="age" value="26"></property>
@@ -563,7 +563,7 @@ public void setClazz(Clazz clazz){
 
 ```xml
 
-<bean id="studentFour" class="com.atguigu.spring.bean.Student">
+<bean id="studentFour" class="com.gy.spring.bean.Student">
     <property name="id" value="1004"></property>
     <property name="name" value="赵六"></property>
     <property name="age" value="26"></property>
@@ -576,7 +576,7 @@ public void setClazz(Clazz clazz){
 >
 > Cannot convert value of type 'java.lang.String' to required type
 >
-> 'com.atguigu.spring.bean.Clazz' for property 'clazz': no matching editors or conversion
+> 'com.gy.spring.bean.Clazz' for property 'clazz': no matching editors or conversion
 >
 > strategy found
 >
@@ -588,7 +588,7 @@ public void setClazz(Clazz clazz){
 
 ```xml
 
-<bean id="studentFour" class="com.atguigu.spring.bean.Student">
+<bean id="studentFour" class="com.gy.spring.bean.Student">
     <property name="id" value="1004"></property>
     <property name="name" value="赵六"></property>
     <property name="age" value="26"></property>
@@ -596,7 +596,7 @@ public void setClazz(Clazz clazz){
     <property name="clazz">
         <!-- 在一个bean中再声明一个bean就是内部bean -->
         <!-- 内部bean只能用于给属性赋值，不能在外部通过IOC容器获取，因此可以省略id属性 -->
-        <bean id="clazzInner" class="com.atguigu.spring.bean.Clazz">
+        <bean id="clazzInner" class="com.gy.spring.bean.Clazz">
             <property name="clazzId" value="2222"></property>
             <property name="clazzName" value="远大前程班"></property>
         </bean>
@@ -608,7 +608,7 @@ public void setClazz(Clazz clazz){
 
 ```xml
 
-<bean id="studentFour" class="com.atguigu.spring.bean.Student">
+<bean id="studentFour" class="com.gy.spring.bean.Student">
     <property name="id" value="1004"></property>
     <property name="name" value="赵六"></property>
     <property name="age" value="26"></property>
@@ -640,7 +640,7 @@ public void setHobbies(String[]hobbies){
 
 ```xml
 
-<bean id="studentFour" class="com.atguigu.spring.bean.Student">
+<bean id="studentFour" class="com.gy.spring.bean.Student">
     <property name="id" value="1004"></property>
     <property name="name" value="赵六"></property>
     <property name="age" value="26"></property>
@@ -677,7 +677,7 @@ public void setStudents(List<Student> students){
 
 ```xml
 
-<bean id="clazzTwo" class="com.atguigu.spring.bean.Clazz">
+<bean id="clazzTwo" class="com.gy.spring.bean.Clazz">
     <property name="clazzId" value="4444"></property>
     <property name="clazzName" value="Javaee0222"></property>
     <property name="students">
@@ -751,15 +751,15 @@ public void setTeacherMap(Map<String, Teacher> teacherMap){
 
 ```xml
 
-<bean id="teacherOne" class="com.atguigu.spring.bean.Teacher">
+<bean id="teacherOne" class="com.gy.spring.bean.Teacher">
     <property name="teacherId" value="10010"></property>
     <property name="teacherName" value="大宝"></property>
 </bean>
-<bean id="teacherTwo" class="com.atguigu.spring.bean.Teacher">
+<bean id="teacherTwo" class="com.gy.spring.bean.Teacher">
 <property name="teacherId" value="10086"></property>
 <property name="teacherName" value="二宝"></property>
 </bean>
-<bean id="studentFour" class="com.atguigu.spring.bean.Student">
+<bean id="studentFour" class="com.gy.spring.bean.Student">
 <property name="id" value="1004"></property>
 <property name="name" value="赵六"></property>
 <property name="age" value="26"></property>
@@ -816,12 +816,12 @@ public void setTeacherMap(Map<String, Teacher> teacherMap){
     <ref bean="teacherTwo"></ref>
 </entry>
 </util:map>
-<bean id="clazzTwo" class="com.atguigu.spring.bean.Clazz">
+<bean id="clazzTwo" class="com.gy.spring.bean.Clazz">
 <property name="clazzId" value="4444"></property>
 <property name="clazzName" value="Javaee0222"></property>
 <property name="students" ref="students"></property>
 </bean>
-<bean id="studentFour" class="com.atguigu.spring.bean.Student">
+<bean id="studentFour" class="com.gy.spring.bean.Student">
 <property name="id" value="1004"></property>
 <property name="name" value="赵六"></property>
 <property name="age" value="26"></property>
@@ -847,7 +847,7 @@ public void setTeacherMap(Map<String, Teacher> teacherMap){
 
 ```xml
 
-<bean id="studentSix" class="com.atguigu.spring.bean.Student"
+<bean id="studentSix" class="com.gy.spring.bean.Student"
       p:id="1006" p:name="小明" p:clazz-ref="clazzOne" p:teacherMap-ref="teacherMap"></bean>
 ```
 
@@ -999,7 +999,7 @@ public class User {
 <!-- scope属性：取值singleton（默认值），bean在IOC容器中只有一个实例，IOC容器初始化时创建
 对象 -->
 <!-- scope属性：取值prototype，bean在IOC容器中可以有多个实例，getBean()时创建对象 -->
-<bean class="com.atguigu.bean.User" scope="prototype"></bean>
+<bean class="com.gy.bean.User" scope="prototype"></bean>
 ```
 
 #### ④测试
@@ -1107,7 +1107,7 @@ public class User {
 ```xml
 <!-- 使用init-method属性指定初始化方法 -->
 <!-- 使用destroy-method属性指定销毁方法 -->
-<bean class="com.atguigu.bean.User" scope="prototype" init-method="initMethod" destroy-method="destroyMethod">
+<bean class="com.gy.bean.User" scope="prototype" init-method="initMethod" destroy-method="destroyMethod">
     <property name="id" value="1001"></property>
     <property name="username" value="admin"></property>
     <property name="password" value="123456"></property>
@@ -1136,7 +1136,7 @@ bean的后置处理器会在生命周期的初始化前后添加额外的操作�
 创建bean的后置处理器：
 
 ```java
-package com.atguigu.spring.process;
+package com.gy.spring.process;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -1162,7 +1162,7 @@ public class MyBeanProcessor implements BeanPostProcessor {
 
 > <!-- bean的后置处理器要放入IOC容器才能生效 -->
 >
-> <bean id="myBeanProcessor"class="com.atguigu.spring.process.MyBeanProcessor"/>
+> <bean id="myBeanProcessor"class="com.gy.spring.process.MyBeanProcessor"/>
 
 ### 2.2.13、实验十三：FactoryBean
 
@@ -1357,7 +1357,7 @@ public class UserFactoryBean implements FactoryBean<User> {
 
 ```xml
 
-<bean id="user" class="com.atguigu.bean.UserFactoryBean"></bean>
+<bean id="user" class="com.gy.bean.UserFactoryBean"></bean>
 ```
 
 #### ④测试
@@ -1460,11 +1460,11 @@ public class UserDaoImpl implements UserDao {
 
 ```xml
 
-<bean id="userController" class="com.atguigu.autowire.xml.controller.UserController" autowire="byType">
+<bean id="userController" class="com.gy.autowire.xml.controller.UserController" autowire="byType">
 </bean>
-<bean id="userService" class="com.atguigu.autowire.xml.service.impl.UserServiceImpl" autowire="byType">
+<bean id="userService" class="com.gy.autowire.xml.service.impl.UserServiceImpl" autowire="byType">
 </bean>
-<bean id="userDao" class="com.atguigu.autowire.xml.dao.impl.UserDaoImpl"></bean>
+<bean id="userDao" class="com.gy.autowire.xml.dao.impl.UserDaoImpl"></bean>
 ```
 
 > 自动装配方式：byName
@@ -1473,15 +1473,15 @@ public class UserDaoImpl implements UserDao {
 
 ```xml
 
-<bean id="userController" class="com.atguigu.autowire.xml.controller.UserController" autowire="byName">
+<bean id="userController" class="com.gy.autowire.xml.controller.UserController" autowire="byName">
 </bean>
-<bean id="userService" class="com.atguigu.autowire.xml.service.impl.UserServiceImpl" autowire="byName">
+<bean id="userService" class="com.gy.autowire.xml.service.impl.UserServiceImpl" autowire="byName">
 </bean>
-<bean id="userServiceImpl" class="com.atguigu.autowire.xml.service.impl.UserServiceImpl" autowire="byName">
+<bean id="userServiceImpl" class="com.gy.autowire.xml.service.impl.UserServiceImpl" autowire="byName">
 </bean>
-<bean id="userDao" class="com.atguigu.autowire.xml.dao.impl.UserDaoImpl">
+<bean id="userDao" class="com.gy.autowire.xml.dao.impl.UserDaoImpl">
 </bean>
-<bean id="userDaoImpl" class="com.atguigu.autowire.xml.dao.impl.UserDaoImpl">
+<bean id="userDaoImpl" class="com.gy.autowire.xml.dao.impl.UserDaoImpl">
 </bean>
 ```
 
@@ -1610,7 +1610,7 @@ public class UserDaoImpl implements UserDao {
 
 ```xml
 
-<context:component-scan base-package="com.atguigu">
+<context:component-scan base-package="com.gy">
 </context:component-scan>
 ```
 
@@ -1618,7 +1618,7 @@ public class UserDaoImpl implements UserDao {
 
 ```xml
 
-<context:component-scan base-package="com.atguigu">
+<context:component-scan base-package="com.gy">
     <!-- context:exclude-filter标签：指定排除规则 -->
     <!--
         type：设置排除或包含的依据
@@ -1626,7 +1626,7 @@ public class UserDaoImpl implements UserDao {
         type="assignable"，根据类型排除，expression中设置要排除的类型的全类名
     -->
     <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-    <!--<context:exclude-filter type="assignable"expression="com.atguigu.controller.UserController"/>-->
+    <!--<context:exclude-filter type="assignable"expression="com.gy.controller.UserController"/>-->
 </context:component-scan>
 ```
 
@@ -1634,7 +1634,7 @@ public class UserDaoImpl implements UserDao {
 
 ```xml
 
-<context:component-scan base-package="com.atguigu" use-default-filters="false">
+<context:component-scan base-package="com.gy" use-default-filters="false">
     <!-- context:include-filter标签：指定在原有扫描规则的基础上追加的规则 -->
     <!-- use-default-filters属性：取值false表示关闭默认扫描规则 -->
     <!-- 此时必须设置use-default-filters="false"，因为默认规则即扫描指定包下所有类 -->
@@ -1644,7 +1644,7 @@ public class UserDaoImpl implements UserDao {
         type="assignable"，根据类型排除，expression中设置要排除的类型的全类名
      -->
     <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-    <!--<context:include-filter type="assignable"expression="com.atguigu.controller.UserController"/>-->
+    <!--<context:include-filter type="assignable"expression="com.gy.controller.UserController"/>-->
 </context:component-scan>
 ```
 
@@ -2217,32 +2217,32 @@ public class CalculatorPureImpl implements Calculator {
 // @Component注解保证这个切面类能够放入IOC容器
 @Component
 public class LogAspect {
-    @Before("execution(public int com.atguigu.aop.annotation.CalculatorImpl.*(..))")
+    @Before("execution(public int com.gy.aop.annotation.CalculatorImpl.*(..))")
     public void beforeMethod(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
         String args = Arrays.toString(joinPoint.getArgs());
         System.out.println("Logger-->前置通知，方法名：" + methodName + "，参数：" + args);
     }
 
-    @After("execution(* com.atguigu.aop.annotation.CalculatorImpl.*(..))")
+    @After("execution(* com.gy.aop.annotation.CalculatorImpl.*(..))")
     public void afterMethod(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
         System.out.println("Logger-->后置通知，方法名：" + methodName);
     }
 
-    @AfterReturning(value = "execution(*com.atguigu.aop.annotation.CalculatorImpl.*(..))", returning = "result")
+    @AfterReturning(value = "execution(*com.gy.aop.annotation.CalculatorImpl.*(..))", returning = "result")
     public void afterReturningMethod(JoinPoint joinPoint, Object result) {
         String methodName = joinPoint.getSignature().getName();
         System.out.println("Logger-->返回通知，方法名：" + methodName + "，结果：" + result);
     }
 
-    @AfterThrowing(value = "execution(*com.atguigu.aop.annotation.CalculatorImpl.*(..))", throwing = "ex")
+    @AfterThrowing(value = "execution(*com.gy.aop.annotation.CalculatorImpl.*(..))", throwing = "ex")
     public void afterThrowingMethod(JoinPoint joinPoint, Throwable ex) {
         String methodName = joinPoint.getSignature().getName();
         System.out.println("Logger-->异常通知，方法名：" + methodName + "，异常：" + ex);
     }
 
-    @Around("execution(* com.atguigu.aop.annotation.CalculatorImpl.*(..))")
+    @Around("execution(* com.gy.aop.annotation.CalculatorImpl.*(..))")
     public Object aroundMethod(ProceedingJoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
         String args = Arrays.toString(joinPoint.getArgs());
@@ -2272,7 +2272,7 @@ public class LogAspect {
         2、开启AspectJ的自动代理，为目标对象自动生成代理
         3、将切面类通过注解@Aspect标识
 	-->
-<context:component-scan base-package="com.atguigu.aop.annotation">
+<context:component-scan base-package="com.gy.aop.annotation">
 </context:component-scan>
 <aop:aspectj-autoproxy/>
 ```
@@ -2335,7 +2335,7 @@ public class LogAspect {
 #### ①声明
 
 ```java
-@Pointcut("execution(* com.atguigu.aop.annotation.*.*(..))")
+@Pointcut("execution(* com.gy.aop.annotation.*.*(..))")
 public void pointCut(){}
 ```
 
@@ -2353,7 +2353,7 @@ public void beforeMethod(JoinPoint joinPoint){
 #### ③在不同切面中使用
 
 ```java
-@Before("com.atguigu.aop.CommonPointCut.pointCut()")
+@Before("com.gy.aop.CommonPointCut.pointCut()")
 public void beforeMethod(JoinPoint joinPoint){
         String methodName=joinPoint.getSignature().getName();
         String args=Arrays.toString(joinPoint.getArgs());
@@ -2368,7 +2368,7 @@ public void beforeMethod(JoinPoint joinPoint){
 获取连接点信息可以在通知方法的参数位置设置JoinPoint类型的形参
 
 ```java
-@Before("execution(public int com.atguigu.aop.annotation.CalculatorImpl.*(..))")
+@Before("execution(public int com.gy.aop.annotation.CalculatorImpl.*(..))")
 public void beforeMethod(JoinPoint joinPoint){
         //获取连接点的签名信息
         String methodName=joinPoint.getSignature().getName();
@@ -2383,7 +2383,7 @@ public void beforeMethod(JoinPoint joinPoint){
 @AfterReturning中的属性returning，用来将通知方法的某个形参，接收目标方法的返回值
 
 ```java
-@AfterReturning(value = "execution(* com.atguigu.aop.annotation.CalculatorImpl.*(..))", returning = "result")
+@AfterReturning(value = "execution(* com.gy.aop.annotation.CalculatorImpl.*(..))", returning = "result")
 public void afterReturningMethod(JoinPoint joinPoint,Object result){
         String methodName=joinPoint.getSignature().getName();
         System.out.println("Logger-->返回通知，方法名："+methodName+"，结果："+result);
@@ -2395,7 +2395,7 @@ public void afterReturningMethod(JoinPoint joinPoint,Object result){
 @AfterThrowing中的属性throwing，用来将通知方法的某个形参，接收目标方法的异常
 
 ```java
-@AfterThrowing(value = "execution(* com.atguigu.aop.annotation.CalculatorImpl.*(..))", throwing = "ex")
+@AfterThrowing(value = "execution(* com.gy.aop.annotation.CalculatorImpl.*(..))", throwing = "ex")
 public void afterThrowingMethod(JoinPoint joinPoint,Throwable ex){
         String methodName=joinPoint.getSignature().getName();
         System.out.println("Logger-->异常通知，方法名："+methodName+"，异常："+ex);
@@ -2405,7 +2405,7 @@ public void afterThrowingMethod(JoinPoint joinPoint,Throwable ex){
 ### 3.4.8、环绕通知
 
 ```java
-@Around("execution(* com.atguigu.aop.annotation.CalculatorImpl.*(..))")
+@Around("execution(* com.gy.aop.annotation.CalculatorImpl.*(..))")
 public Object aroundMethod(ProceedingJoinPoint joinPoint){
         String methodName=joinPoint.getSignature().getName();
         String args=Arrays.toString(joinPoint.getArgs());
@@ -2449,11 +2449,11 @@ public Object aroundMethod(ProceedingJoinPoint joinPoint){
 
 ```xml
 
-<context:component-scan base-package="com.atguigu.aop.xml"></context:componentscan>
+<context:component-scan base-package="com.gy.aop.xml"></context:componentscan>
 <aop:config>
 <!--配置切面类-->
 <aop:aspect ref="loggerAspect">
-    <aop:pointcut id="pointCut" expression="execution(*com.atguigu.aop.xml.CalculatorImpl.*(..))"/>
+    <aop:pointcut id="pointCut" expression="execution(*com.gy.aop.xml.CalculatorImpl.*(..))"/>
     <aop:before method="beforeMethod" pointcut-ref="pointCut"></aop:before>
     <aop:after method="afterMethod" pointcut-ref="pointCut"></aop:after>
     <aop:after-returning method="afterReturningMethod" returning="result" pointcut-ref="pointCut"></aop:after-returning>
@@ -2723,7 +2723,7 @@ jdbc.driver=com.mysql.cj.jdbc.Driver
 
 ```xml
 <!--扫描组件-->
-<context:component-scan base-package="com.atguigu.spring.tx.annotation">
+<context:component-scan base-package="com.gy.spring.tx.annotation">
 </context:component-scan>
         <!-- 导入外部属性文件 -->
 <context:property-placeholder location="classpath:jdbc.properties"/>
@@ -3180,7 +3180,7 @@ public void checkout(Integer[]bookIds,Integer userId){
 <aop:config>
     <!-- 配置事务通知和切入点表达式 -->
     <aop:advisor advice-ref="txAdvice"
-                 pointcut="execution(*com.atguigu.spring.tx.xml.service.impl.*.*(..))"></aop:advisor>
+                 pointcut="execution(*com.gy.spring.tx.xml.service.impl.*.*(..))"></aop:advisor>
 </aop:config>
         <!-- tx:advice标签：配置事务通知 -->
         <!-- id属性：给事务通知标签设置唯一标识，便于引用 -->
