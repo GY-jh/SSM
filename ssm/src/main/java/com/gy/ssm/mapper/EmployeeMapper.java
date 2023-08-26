@@ -1,5 +1,9 @@
 package com.gy.ssm.mapper;
 
+import com.gy.ssm.pojo.Employee;
+
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -8,4 +12,11 @@ package com.gy.ssm.mapper;
  * @Description:
  */
 public interface EmployeeMapper {
+
+    /**
+     * 查询所有的员工信息
+     *
+     * @return
+     */
+    List<Employee> getAllEmployees();
 }

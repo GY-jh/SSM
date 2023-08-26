@@ -20,9 +20,8 @@
 
     <!--配置分页插件-->
     <plugins>
-        <plugin interceptor="com.github.pagehelper.PageInterceptor">
-            <property name="dialect" value="mysql"/> <!-- 数据库类型 -->
-        </plugin>
+        <!--配置分页插件-->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
     </plugins>
 
 
