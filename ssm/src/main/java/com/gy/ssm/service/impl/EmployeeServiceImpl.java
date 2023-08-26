@@ -2,6 +2,7 @@ package com.gy.ssm.service.impl;
 
 import com.gy.ssm.service.EmployeeService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 @Service
+@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
 
